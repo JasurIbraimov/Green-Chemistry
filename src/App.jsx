@@ -4,6 +4,7 @@ import styles from './App.module.css'
 // Components
 import Header from './components/Header/Header.component'
 import MendeleevTable from './components/MendeleevTable/MendeleevTable.component'
+// import Popup from './components/Popup/Popup.component'
 // Pages 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                     <MendeleevTable/>
                 </Route>
             </Switch>
+            {/* <Popup/> */}
         </div>
     )
 }

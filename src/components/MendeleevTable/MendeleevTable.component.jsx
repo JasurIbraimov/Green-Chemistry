@@ -9,10 +9,12 @@ class MendeleevTable extends Component {
 		super(props)
 		this.state = {
 			elements: ELEMENTS_DATA,
-			lang: 'ru'
+			lang: 'ru',
 		}
+		console.log('constructor')
 	}
 	render() {
+		console.log('render')
         const {elements, lang} = this.state
 		return (
 			<div>
@@ -26,7 +28,7 @@ class MendeleevTable extends Component {
 						/>
 					))
 				}
-			</ul>
+				</ul>
 			</div>
 		)
 	}
