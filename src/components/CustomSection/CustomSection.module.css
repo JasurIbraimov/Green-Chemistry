@@ -1,0 +1,74 @@
+.sectionAction {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.sectionContainer {
+    background-color: #fff;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+.sectionTitle {
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    margin-bottom: 1rem;
+}
+.sectionTable {
+    margin-top: 1rem;
+}
+.sectionTableHeader {
+    display: flex;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    justify-content: space-between;
+}
+.sectionTableHeader li {
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+    background-color: #34495e;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+.sectionTableHeader li:last-child {
+    border-right: none;
+}
+.sectionItem {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    font-size: 1rem;
+    width: 100%;
+}
+.sectionItem li {
+    padding: 10px;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: none;
+    border-top: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.sectionItem:hover {
+    background-color: #ecf0f1;
+}
+.sectionItem li:first-child {
+    border-left:  1px solid rgba(0, 0, 0, 0.2);
+}
+.sectionItemSymbols {
+    display: flex;
+    justify-content: center;
+}
+
+.sectionIcon {
+    width: 40px;
+    height: 40px;
+}

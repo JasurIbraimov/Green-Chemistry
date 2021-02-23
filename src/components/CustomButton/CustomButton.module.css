@@ -1,0 +1,14 @@
+.customButton {
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-color: #27ae60;
+    transition: .25s background-color;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customButton:hover {
+    background-color: #2ecc71;
+}

@@ -1,37 +1,53 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './MendeleevTable.module.css'
 // Data
-import { ELEMENTS_DATA } from '../../data/elements.data'
 // Components
 import Element from './Element/Element.component'
-class MendeleevTable extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			elements: ELEMENTS_DATA,
-			lang: 'ru',
+const MendeleevTable = ({elementsTable, setSelectedElement, selectedElement}) => {
+	const handleSelectElement = (atomNumber) => {
+		const element = elementsTable.filter(elem => elem.atom_number === atomNumber)
+		element[0].count += 1
+		setSelectedElement((prevState) => {
+			if(prevState.findIndex(el => el.atom_number === atomNumber) === -1) {
+				return [...prevState, ...element]
+			} else {
+				return [...prevState]
+			}
+		})
+	}
+	const handleRemoveElement = (e, atomNumber) => {
+		e.preventDefault()
+		const element = elementsTable.filter(elem => elem.atom_number === atomNumber)
+		if (element[0].count > 1) {
+			element[0].count -= 1
+			setSelectedElement(prevState => {
+				return [...prevState]
+			})
+		} else {
+			element[0].count = 0
+			setSelectedElement(prevState => {
+				return [...prevState.filter(el => el.atom_number !== element[0].atom_number)]
+			})
 		}
-		console.log('constructor')
+
 	}
-	render() {
-		console.log('render')
-        const {elements, lang} = this.state
-		return (
-			<div>
-				<ul className={styles.table}>
-				{
-					elements.map(({name: {en, ru}, ...otherProps}, index) => (
-						<Element 
-							name={lang === 'ru' ? ru : en}
-							key={index} 
-							{...otherProps}
-						/>
-					))
-				}
-				</ul>
-			</div>
-		)
-	}
+	return (
+		<div>
+			<ul className={styles.table}>
+			{
+				elementsTable.map(({name: {en, ru}, ...otherProps}, index) => (
+					<Element 
+						handleRemoveElement={handleRemoveElement}
+						handleSelectElement={handleSelectElement}
+						name={ru}
+						key={index} 
+						{...otherProps}
+					/>
+				))
+			}
+			</ul>
+		</div>
+	)
 }
 
 export default MendeleevTable

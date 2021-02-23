@@ -40,7 +40,7 @@ const SUBGROUPS = {
         ru: 'Актиноиды'
     }
 }
-export const ELEMENTS_DATA = [
+const ELEMENTS_DATA = [
     {
         atom_number: 1,
         subgroup: SUBGROUPS.nonmetals,
@@ -225,7 +225,7 @@ export const ELEMENTS_DATA = [
     },
     {
         atom_number: 14,
-        subgroup: SUBGROUPS.postTransitionMetals,
+        subgroup: SUBGROUPS.metalloids,
         symbol: 'Si',
         name: {
             ru: 'Кремний',
@@ -380,7 +380,7 @@ export const ELEMENTS_DATA = [
     {
         atom_number: 25,
         subgroup: SUBGROUPS.transitionMetals,
-        symbol: 'Cr',
+        symbol: 'Mn',
         name: {
             ru: 'Марганец',
             en: 'Manganese'
@@ -1275,3 +1275,5 @@ export const ELEMENTS_DATA = [
     },
 
 ]
+
+export const NEW_ELEMENTS_DATA = ELEMENTS_DATA.map(element => ({...element, count: 0}))

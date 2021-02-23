@@ -1,0 +1,11 @@
+.welcomePage {
+    padding: 2rem;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.countLink {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}

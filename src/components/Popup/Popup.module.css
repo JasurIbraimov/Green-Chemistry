@@ -1,8 +1,73 @@
-.popup {
-    position: absolute;
+.popupContainer {
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    transition: .25s;
+    align-items: center;
 }
+.visible {
+    display: flex;
+}
+.popupInner {
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    background-color: #fff;
+}
+
+.addBtn {
+    margin-top: 1rem;
+}
+
+.formula {
+    position: absolute;
+    display: flex;
+    left: 20%;
+    font-size: 3rem;
+}
+.popupTitle {
+    margin-bottom: 2rem;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.properties {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+    padding: 1rem 1.5rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    margin-top: 10px;
+}
+.property {
+    display: flex;
+    flex-direction: column;
+}
+.property label {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.property input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+}
+.property input[type='number'] {
+    padding: 10px;
+    border: none;
+}
+
