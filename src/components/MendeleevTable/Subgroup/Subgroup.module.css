@@ -1,0 +1,27 @@
+.subgroup {
+    margin-top: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    position: relative;
+}
+.subgroupTitle {
+    position: absolute;
+    top: -13px;
+    background-color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    padding: 0 1rem;
+}  
+.subgroupElements {
+    display: flex;
+    flex-wrap: wrap;
+}
+@media(max-width: 425px) {
+    .subgroup {
+        padding: 1rem 10px;
+    }
+    .subgroupElements {
+        justify-content: center;
+    }
+}

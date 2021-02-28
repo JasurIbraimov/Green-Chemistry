@@ -1,8 +1,3 @@
-.sectionAction {
-    margin: 2rem;
-    display: flex;
-    justify-content: center;
-}
 .sectionContainer {
     background-color: #fff;
     padding: 2rem;
@@ -28,28 +23,35 @@
 }
 .sectionTableHeader li {
     padding: 10px;
-    width: 25%;
+    width: 20%;
     text-align: center;
     background-color: #34495e;
     color: #fff;
     border-right: 1px solid #fff;
 }
+.sectionTableHeader li:first-child {
+    width: 30%;
+}
 .sectionTableHeader li:last-child {
     border-right: none;
+    width: 30%;
 }
 .sectionItem {
     display: flex;
     position: relative;
-    justify-content: space-between;
     font-size: 1rem;
     width: 100%;
 }
 .sectionItem li {
     padding: 10px;
-    width: 25%;
+    width: 20%;
     display: flex;
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    word-break: break-all;
+    -ms-word-break: break-all;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-left: none;
     border-top: none;
@@ -57,12 +59,17 @@
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+.sectionItem li:nth-child(4) {
+    width: 30% ;
+}
 .sectionItem:hover {
     background-color: #ecf0f1;
 }
 .sectionItem li:first-child {
     border-left:  1px solid rgba(0, 0, 0, 0.2);
+    width: 30%;
 }
+
 .sectionItemSymbols {
     display: flex;
     justify-content: center;
@@ -71,4 +78,17 @@
 .sectionIcon {
     width: 40px;
     height: 40px;
+}
+
+@media(max-width: 425px) {
+    .sectionContainer {
+        padding: 10px;
+        margin-top: 3rem;
+        background-color: #ecf0f1;
+        box-shadow: none;
+    }
+    .sectionTableHeader li {
+        padding: 5px;
+        font-size: 12px;
+    }
 }

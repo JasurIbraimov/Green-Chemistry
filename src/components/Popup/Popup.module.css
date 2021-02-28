@@ -19,6 +19,9 @@
 .popupInner {
     padding: 2rem;
     border-radius: 10px;
+    height: 80%;
+    overflow-y: scroll;
+    width: 80%;
     position: relative;
     background-color: #fff;
 }
@@ -26,12 +29,19 @@
 .addBtn {
     margin-top: 1rem;
 }
+.popupMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .formula {
-    position: absolute;
+    transition: .25s;
     display: flex;
-    left: 20%;
     font-size: 3rem;
+    height: 100%;
+    flex-wrap: wrap;
+    width: 100%;
 }
 .popupTitle {
     margin-bottom: 2rem;
@@ -42,20 +52,21 @@
 }
 
 .properties {
-    position: absolute;
-    left: 20%;
-    top: 20%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: #ecf0f1;
     padding: 1rem 1.5rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-    width: 500px;
-    margin-top: 10px;
+    width: 60%;
 }
 .property {
     display: flex;
     flex-direction: column;
+}
+.property div {
+    display: flex;
+    align-items: center;
 }
 .property label {
     user-select: none;
@@ -65,9 +76,38 @@
 .property input[type='checkbox'] {
     width: 20px;
     height: 20px;
+    margin-right: 10px;
 }
 .property input[type='number'] {
     padding: 10px;
     border: none;
 }
+.errorMessage {
+    padding: 10px;
+    border: 1px solid #e74c3c;
+    text-align: center;
+    color: #e74c3c;
+    transition: .25s;
+    height: 100%;
+}
 
+@media(max-width: 768px) {
+    .popupInner {
+        width: 95%;
+        padding: 1rem;
+    }
+    .properties {
+        width: 100%;
+    }
+}
+@media(max-width: 425px) {
+    .popupTitle {
+        text-align: left;
+    }
+    .popupInner {
+        width: 100%;
+        border-radius: 0px;
+        height: 100%;
+    }
+ 
+}

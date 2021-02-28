@@ -1,5 +1,5 @@
 .element {
-    width: 100%;
+    width: 85px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     height: 100px;
     padding: 5px;
@@ -40,6 +40,12 @@
 }
 .noblegases {
     background-color: #95a5a6;
+}
+.lanthanides {
+    background-color: #3498db;
+}
+.actinides {
+    background-color: #fd79a8;
 }
 .atomNumber {
     font-size: 12px;

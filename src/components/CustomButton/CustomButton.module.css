@@ -8,7 +8,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem auto;
 }
 .customButton:hover {
     background-color: #2ecc71;
+}
+.customButton:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.customButton:disabled:hover{
+    cursor: not-allowed;
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './CustomRemoveBtn.module.css'
-const CustomRemoveBtn = ({handleOnClick, customStyles}) => {
+const CustomRemoveBtn = ({customStyles, ...otherProps}) => {
     return (
-        <div style={{...customStyles}} onClick={handleOnClick} className={styles.removeBtn}>
+        <div style={{...customStyles}} {...otherProps} className={styles.removeBtn}>
             &times;
         </div>
     )

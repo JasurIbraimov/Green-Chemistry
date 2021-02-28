@@ -13,8 +13,7 @@ const Header = () => {
             </Link>
             <div className={styles.links}>
                 <Link to='/'>На главную</Link>
-                <Link to='/formulas'>Формулы</Link>
-                <Link to='/contacts'>Контакты</Link>
+                {/* <Link to='/contacts'>Контакты</Link> */}
             </div>
         </div>
     )
