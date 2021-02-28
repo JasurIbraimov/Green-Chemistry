@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './CustomRemoveBtn.module.css'
-const CustomRemoveBtn = ({customStyles, ...otherProps}) => {
+const CustomRemoveBtn = ({...otherProps}) => {
     return (
-        <div style={{...customStyles}} {...otherProps} className={styles.removeBtn}>
+        <div {...otherProps} className={styles.removeBtn}>
             &times;
         </div>
     )

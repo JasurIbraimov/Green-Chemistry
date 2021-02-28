@@ -1,0 +1,11 @@
+.solvents {
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: #ecf0f1;
+}
+
+@media(max-width: 425px) {
+    .solvents  {
+        padding: 10px 5px;
+    }
+}

@@ -1,7 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {ReactComponent as LogoIcon} from '../../assets/logo.svg'
 import styles from './Header.module.css'
+// Components
+import HeaderLink from './HeaderLink/HeaderLink.component'
+import {ReactComponent as LogoIcon} from '../../assets/logo.svg'
 const Header = () => {
     return (
         <div className={styles.header}>
@@ -12,8 +14,8 @@ const Header = () => {
                 </div>
             </Link>
             <div className={styles.links}>
-                <Link to='/'>На главную</Link>
-                {/* <Link to='/contacts'>Контакты</Link> */}
+                <HeaderLink activeOnExact={true} to='/'>На главную</HeaderLink>
+                <HeaderLink activeOnExact={true} to='/contacts'>Контакты</HeaderLink>
             </div>
         </div>
     )

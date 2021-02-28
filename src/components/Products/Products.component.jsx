@@ -1,9 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import styles from './Products.module.css'
+// Components 
 import CustomSection from '../CustomSection/CustomSection.component'
 import CustomButton from '../CustomButton/CustomButton.component'
 import Popup from '../Popup/Popup.component'
 // Redux
+import { connect } from 'react-redux'
 import {addProduct, removeProduct, changePopupVisibility} from '../../redux/actions/products.actions'
 import {resetSelectedElements} from '../../redux/actions/elements.actions'
 const Products = ({popup, changePopupVisibility, products, addProduct, resetSelectedElements, removeProduct}) => {
@@ -12,9 +14,9 @@ const Products = ({popup, changePopupVisibility, products, addProduct, resetSele
         resetSelectedElements()
     }
     return (
-        <div>
+        <div className={styles.products}>
             <CustomSection handleRemoveItem={removeProduct} sectionItems={products} sectionName="Продукты"/>
-            <CustomButton onClick={() => changePopupVisibility(true)} btnLabel="Добавить" btnWidth={200} btnHeight={50}/>
+            <CustomButton onClick={() => changePopupVisibility(true)} btnLabel="Добавить" btnWidth={150} btnHeight={40}/>
             <Popup handleAddItem={addProduct} popup={popup} closePopup={closePopup}/>
         </div>
     )

@@ -1,12 +1,14 @@
 .removeBtn {
     background-color: #e74c3c;
     position: absolute;
-    top: 0px;
-    right: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     cursor: pointer;
     border-radius: 50%;
+    transition: .25s;
+}
+.removeBtn:hover {
+    background-color: #f12009;
 }

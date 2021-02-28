@@ -7,8 +7,12 @@ import CountProperties from '../../components/CountProperties/CountProperties.co
 import Solvents from '../../components/Solvents/Solvents.component'
 import Reagents from '../../components/Reagents/Reagents.component'
 import Products from '../../components/Products/Products.component'
+// Redux
 import { connect } from 'react-redux'
-const WelcomePage = ({ reagents, products, solvents }) => {
+import {setProperties} from '../../redux/actions/properties.actions'
+// Properties functions 
+import * as propertyFunc from '../../functions/properties.functions'
+const WelcomePage = ({ reagents, products, solvents, setProperties }) => {
 	const [isCountShown, setCountShown] = useState(false)
 	const [error, serError] = useState(false)
 	useEffect(() => {
@@ -18,118 +22,120 @@ const WelcomePage = ({ reagents, products, solvents }) => {
 			serError(false)
 		}
 	}, [reagents, solvents, products])
-	const getMass = (data, mass) => {
-		return data
-			.map((product) => +product[mass])
-			.reduce((acc, cur) => acc + cur)
-	}
-    const getWaterMass = (data) => {
-        const water = data.map((item) => {
-            const h = item.elements.find(
-                (el) => el.symbol === 'H' && el.count === 2
-            ) 
-            const o = item.elements.find(
-                (el) => el.symbol === 'O' && el.count === 1
-            )
-            if (
-                h
-                &&
-                o 
-                && !item.elements.filter((el) => el !== o && el !== h).length
-            ) {
-                return +item.mass
-            } else {
-                return false
-            }
-        }).filter(el => el)
-        if (water.length) {
-            return water.reduce((acc, cur) => acc + cur)
-        } else {
-            return 0
-        }
+    const handleOnCalculate = () => {
+        setProperties([
+            {
+                name: 'Atom Economy',
+                value: propertyFunc.getAtomEconomy(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Carbon Efficiency',
+                value: propertyFunc.getCarbonEfficiency(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Chemical Yield',
+                value: propertyFunc.getChemicalYield(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Solvent Intensity',
+                value: propertyFunc.getSolventIntensity(products, solvents).toFixed(2),
+                optimumValue: 0,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Water Intensity',
+                value: propertyFunc.getSolventIntensity(products, solvents).toFixed(2),
+                optimumValue: 0,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Renewables Intensity',
+                value: propertyFunc.getRenewablesIntensity(products, solvents, reagents).toFixed(2),
+                optimumValue: 1,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Renewables Percentage',
+                value: propertyFunc.getRenewablePercentage(products, solvents, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'E-factor',
+                value: propertyFunc.getEfactor(products, reagents).toFixed(2),
+                optimumValue: 0,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Effective Mass Yield',
+                value: propertyFunc.getEffectiveMassYield(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Mass Intensity',
+                value: propertyFunc.getMassIntensity(products, solvents, reagents).toFixed(2),
+                optimumValue: 1,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Reaction Mass Efficiency',
+                value: propertyFunc.getReactionMassEfficiency(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Mass Productivity',
+                value: propertyFunc.getMassProductivity(products, solvents, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Process Mass Intensity',
+                value: propertyFunc.getProcessMassIntensity(products, solvents, reagents).toFixed(2),
+                optimumValue: 1,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Process Mass Efficiency',
+                value: propertyFunc.getProcessMassEfficiency(products, solvents, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Reaction Mass Intencity',
+                value: propertyFunc.getReactionMassIntencity(products, reagents).toFixed(2),
+                optimumValue: 1,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Optimum Efficiency',
+                value: propertyFunc.getOptimumEfficiency(products, reagents).toFixed(2),
+                optimumValue: 100,
+                unit: '%'
+            },
+            {
+                name: 'Simple E-Factor',
+                value: propertyFunc.getSimpleEFactor(products, reagents).toFixed(2),
+                optimumValue: 0,
+                unit: 'kg/kg'
+            },
+            {
+                name: 'Complete E-Factor',
+                value: propertyFunc.getCompleteEFactor(products, solvents, reagents).toFixed(2),
+                optimumValue: 0,
+                unit: 'kg/kg'
+            },
+
+        ])
+        setCountShown(true)
     }
-	const getAtomEconomy = () => {
-		if (reagents.length && products.length) {
-			const molarWeightOfProducts = getMass(products, 'atomMass')
-			const molarWeightOfReagents = getMass(reagents, 'atomMass')
-			return (molarWeightOfProducts / molarWeightOfReagents) * 100
-		}
-	}
-	const getCarbonEfficiency = () => {
-		const getCarbonCount = (data) => {
-			return data
-				.map((item) =>
-					item.elements
-						.filter((el) => el.symbol === 'C')
-						.map((el) => el.atom_mass * el.count)
-				)
-				.filter((el) => el.length > 0)
-				.map((el) => el.reduce((acc, cur) => acc + cur))
-				.reduce((acc, cur) => acc + cur)
-		}
-		if (reagents.length && products.length) {
-			const carbonInProduct = getCarbonCount(products)
-			const carbonInReagents = getCarbonCount(reagents)
-			return (carbonInProduct / carbonInReagents) * 100
-		}
-	}
-	const getReactionMassEfficiency = () => {
-		if (reagents.length && products.length) {
-			const massOfProducts = getMass(products, 'mass')
-			const massOfReagents = getMass(reagents, 'mass')
-			return (massOfProducts / massOfReagents) * 100
-		}
-	}
-	const getMassIntensity = () => {
-		if (reagents.length && products.length && solvents.length) {
-			const massOfProducts = getMass(products, 'mass')
-			const massOfReagents = getMass(reagents, 'mass')
-			const massOfSolvents = getMass(solvents, 'mass')
-			return ((massOfReagents + massOfSolvents) / massOfProducts) * 100
-		}
-	}
-	const getMassProductivity = () => {
-		return (1 / getMassIntensity()) * 100
-	}
-	const getWaterIntensity = () => {
-		if (reagents.length && products.length && solvents.length) {
-			const massOfProducts = getMass(products, 'mass')
-			const waterMassInSolvents = getWaterMass(solvents)
-            const waterMassInReagents = getWaterMass(reagents)
-            const waterMassInProduct = getWaterMass(products)
-			return (waterMassInSolvents + waterMassInReagents + waterMassInProduct) / massOfProducts
-		}
-	}
-    const getSolventIntensity = () => {
-        if (reagents.length && products.length && solvents.length) {
-			const massOfProducts = getMass(products, 'mass')
-			const waterMass = getWaterMass(solvents)
-            const solventsMass = getMass(solvents, 'mass')
-			return (solventsMass - waterMass) / massOfProducts
-		}
-    }
-    const getRenewablesIntensity = () => {
-        if (reagents.length && products.length && solvents.length) { 
-            const renewableReagents = reagents.filter(reagent => reagent.renewable)
-            const renewableSolvents = solvents.filter(reagent => reagent.renewable)
-            const massOfRenewableReagents = getMass(renewableReagents, 'mass')
-            const massOfRenewableSolvents = getMass(renewableSolvents, 'mass')
-            const massOfProducts = getMass(products, 'mass')
-            return (massOfRenewableReagents + massOfRenewableSolvents) / massOfProducts
-        }
-    }
-    const getProcessMassIntensity = () => {
-        if (reagents.length && products.length && solvents.length) {
-			const massOfProducts = getMass(products, 'mass')
-            const massOfSolvents = getMass(solvents, 'mass')
-            const massOfReagents = getMass(reagents, 'mass')
-            return (massOfReagents + massOfSolvents) / massOfProducts
-		}
-    }
-    const getRenewablePercentage = () => {
-        return getRenewablesIntensity() * 100 / getProcessMassIntensity()
-    }
-    console.log(getRenewablePercentage())
 	return (
 		<div className={styles.welcomePage}>
 			<Solvents />
@@ -139,7 +145,7 @@ const WelcomePage = ({ reagents, products, solvents }) => {
 				<Link to='count' smooth='true' duration={500}>
 					<CustomButton
 						disabled={error}
-						onClick={() => setCountShown(true)}
+						onClick={handleOnCalculate}
 						btnLabel='Вычислить'
 						btnWidth={250}
 						btnHeight={60}
@@ -161,4 +167,5 @@ const mapStateToProps = ({
 	solvents,
 	products,
 })
-export default connect(mapStateToProps)(WelcomePage)
+const mapDispatchToProps = (dispatch) => ({setProperties: (properties) => dispatch(setProperties(properties))})
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomePage)

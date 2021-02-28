@@ -1,9 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import styles from './Reagents.module.css'
+// Components
 import CustomSection from '../CustomSection/CustomSection.component'
 import CustomButton from '../CustomButton/CustomButton.component'
 import Popup from '../Popup/Popup.component'
 // Redux
+import { connect } from 'react-redux'
 import {addReagent, removeReagent, changePopupVisibility} from '../../redux/actions/reagents.actions'
 import {resetSelectedElements} from '../../redux/actions/elements.actions'
 const Reagents = ({popup, changePopupVisibility, reagents, addReagent, resetSelectedElements, removeReagent}) => {
@@ -12,9 +14,9 @@ const Reagents = ({popup, changePopupVisibility, reagents, addReagent, resetSele
         resetSelectedElements()
     }
     return (
-        <div>
+        <div className={styles.reagents}>
             <CustomSection handleRemoveItem={removeReagent} sectionItems={reagents} sectionName="Реагенты"/>
-            <CustomButton onClick={() => changePopupVisibility(true)} btnLabel="Добавить" btnWidth={200} btnHeight={50}/>
+            <CustomButton onClick={() => changePopupVisibility(true)} btnLabel="Добавить" btnWidth={150} btnHeight={40}/>
             <Popup handleAddItem={addReagent} popup={popup} closePopup={closePopup}/>
         </div>
     )

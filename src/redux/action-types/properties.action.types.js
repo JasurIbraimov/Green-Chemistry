@@ -1,0 +1,1 @@
+export const SET_PROPERTIES = 'properties/SET_PROPERTIES'

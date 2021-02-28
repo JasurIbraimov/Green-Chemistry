@@ -1,8 +1,8 @@
 .countProperties {
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
     padding: 2rem;
-    margin-top: 2rem;
+    margin-top: 5rem;
     text-align: center;
+    min-height: 100vh;
 }
 
 .results {
@@ -11,12 +11,59 @@
 
 .result {
     display: flex;
+    border: 1px solid #27ae60;
+    color: #27ae60;
+    margin-top: 1rem;
+}
+.result:hover {
+    color: #fff;
+    background-color: #27ae60;
+}
+.failResult {
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+.failResult:hover {
+    color: #fff;
+    background-color: #e74c3c;
+}
+.blocked {
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.37);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.blocked:hover {
+    color: rgba(255, 255, 255, 0.37);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.resultsHeader {
+    display: flex;
+}
+.resultsHeader li {
+    width: calc(100% / 3);
+    display: flex;
+    padding: .5rem;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    background-color: #34495e;
+    color: #fff;
 }
 .result p {
-    border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 0.7rem;
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
 }
-.result p:first-child {
-    border-right: none;
+.result p span {
+    margin-right: 2px;
+}
+@media(max-width: 425px) {
+    .countProperties {
+        padding: 0rem;
+        box-shadow: none;
+    }
 }

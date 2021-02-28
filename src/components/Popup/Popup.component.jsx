@@ -51,7 +51,7 @@ const Popup = ({popup, closePopup, selectedElements, handleAddItem}) => {
     return (
         <div className={`${styles.popupContainer} ${popup ? styles.visible : ''}`}>
             <div className={styles.popupInner}>
-                <CustomRemoveBtn customStyles={{width: 40, height: 40, fontSize: '2rem'}} onClick={handleClosePopup}/>
+                <CustomRemoveBtn style={{width: 40, height: 40, fontSize: '2rem', top: 10, right: 20 }} onClick={handleClosePopup}/>
                 <h2 className={styles.popupTitle}>Выберите состав:</h2>
                 <div className={styles.popupMain}>
                     <div className={`${selectedElements.length ? styles.formula : ''}`}>

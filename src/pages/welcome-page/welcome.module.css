@@ -5,12 +5,15 @@
 }
 
 .countLink {
-    margin-top: 2rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: flex-end;
 }
 @media(max-width: 425px) {
     .welcomePage {
         padding: 0px;
+    }
+    .countLink {
+        justify-content: center;
     }
 }

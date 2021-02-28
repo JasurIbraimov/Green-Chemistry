@@ -47,7 +47,7 @@ const CustomSection = ({ sectionName, sectionItems, handleRemoveItem }) => {
 									</li>
 									<CustomRemoveBtn
 										onClick={() => handleRemoveItem(id)}
-										customStyles={{ width: 20, height: 20 }}
+										style={{ width: 20, height: 20, top: 0, right: 0 }}
 									/>
 								</ul>
 							)

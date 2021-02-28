@@ -1,11 +1,4 @@
-.sectionContainer {
-    background-color: #fff;
-    padding: 2rem;
-    margin-top: 2rem;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-}
 .sectionTitle {
-    text-align: center;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -62,9 +55,7 @@
 .sectionItem li:nth-child(4) {
     width: 30% ;
 }
-.sectionItem:hover {
-    background-color: #ecf0f1;
-}
+
 .sectionItem li:first-child {
     border-left:  1px solid rgba(0, 0, 0, 0.2);
     width: 30%;
@@ -81,14 +72,11 @@
 }
 
 @media(max-width: 425px) {
-    .sectionContainer {
-        padding: 10px;
-        margin-top: 3rem;
-        background-color: #ecf0f1;
-        box-shadow: none;
-    }
     .sectionTableHeader li {
         padding: 5px;
         font-size: 12px;
+    }
+    .sectionItem li {
+        padding: 10px 0;
     }
 }
