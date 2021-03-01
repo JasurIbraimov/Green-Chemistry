@@ -43,11 +43,6 @@ const Popup = ({popup, closePopup, selectedElements, handleAddItem}) => {
         closePopup()
         setError({message: ''})
     }
-    if (popup) {
-        document.body.style.overflow = 'hidden'
-    } else {
-        document.body.style.overflow = 'visible'
-    }
     return (
         <div className={`${styles.popupContainer} ${popup ? styles.visible : ''}`}>
             <div className={styles.popupInner}>

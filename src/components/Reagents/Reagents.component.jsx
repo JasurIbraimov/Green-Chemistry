@@ -13,6 +13,11 @@ const Reagents = ({popup, changePopupVisibility, reagents, addReagent, resetSele
         changePopupVisibility(false)
         resetSelectedElements()
     }
+    if (popup) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'visible'
+    }
     return (
         <div className={styles.reagents}>
             <CustomSection handleRemoveItem={removeReagent} sectionItems={reagents} sectionName="Реагенты"/>

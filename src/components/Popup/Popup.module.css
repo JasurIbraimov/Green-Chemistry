@@ -16,6 +16,7 @@
 .visible {
     display: flex;
 }
+
 .popupInner {
     padding: 2rem;
     border-radius: 10px;

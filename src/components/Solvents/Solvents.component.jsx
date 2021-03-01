@@ -13,6 +13,11 @@ const Solvents = ({popup, changePopupVisibility, solvents, addSolvent, resetSele
         changePopupVisibility(false)
         resetSelectedElements()
     }
+    if (popup) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'visible'
+    }
     return (
         <div className={styles.solvents}>
             <CustomSection handleRemoveItem={removeSolvent} sectionItems={solvents} sectionName="Растворители"/>

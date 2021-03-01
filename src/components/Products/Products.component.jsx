@@ -13,6 +13,11 @@ const Products = ({popup, changePopupVisibility, products, addProduct, resetSele
         changePopupVisibility(false)
         resetSelectedElements()
     }
+    if (popup) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = 'visible'
+    }
     return (
         <div className={styles.products}>
             <CustomSection handleRemoveItem={removeProduct} sectionItems={products} sectionName="Продукты"/>
