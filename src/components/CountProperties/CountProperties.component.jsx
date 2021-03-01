@@ -14,7 +14,7 @@ const CountProperties = ({properties}) => {
                 </ul>
                 {
                     properties.map(({name, value, optimumValue, unit}, index) => (
-                        <li key={index} className={`${styles.result} ${+value !== optimumValue ? styles.failResult : ''} ${name === 'Carbon Efficiency' && +value === 0 ? styles.blocked : ''} `}>
+                        <li key={index} className={`${styles.result} ${+value !== optimumValue ? styles.failResult : ''} ${value === 'Нет углерода' ? styles.blocked : ''} `}>
                             <p>{name}</p>
                             <p>
                                 <span>{value}</span>

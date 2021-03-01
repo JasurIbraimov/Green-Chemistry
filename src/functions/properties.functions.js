@@ -42,8 +42,8 @@ export const getCarbonEfficiency = (products, reagents) => {
 		for (let i = 0; i < data.length; i++) {
 			carbon.push(data[i].elements.filter((el) => el.symbol === 'C'))
 		}
-		if (carbon.every(item => item.length > 0)) {
-			return carbon.map((el) => el.map(carbon => carbon.count * carbon.atom_mass)).reduce((acc, cur) => +acc + +cur)
+		if (carbon.some(item => item.length > 0)) {
+			return carbon.filter(c => c.length).map((el) => el.map(carbon => carbon.count * carbon.atom_mass).reduce((acc, cur) => acc + cur)).reduce((acc, cur) => acc + cur)
 		} else {
 			return 0
 		}
@@ -51,7 +51,9 @@ export const getCarbonEfficiency = (products, reagents) => {
 	const carbonInProduct = getCarbonCount(products)
 	const carbonInReagents = getCarbonCount(reagents)
 	const carbonEfficiency = (carbonInProduct / carbonInReagents) * 100
-	if (carbonEfficiency) {
+	if (carbonInProduct === 0 && carbonInReagents === 0) {
+		return 'Нет углерода'
+	} else if (carbonEfficiency) {
 		return carbonEfficiency
 	} else {
 		return 0

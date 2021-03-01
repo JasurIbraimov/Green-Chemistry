@@ -19,7 +19,7 @@
 .popupInner {
     padding: 2rem;
     border-radius: 10px;
-    height: 80%;
+    height: 90%;
     overflow-y: scroll;
     width: 80%;
     position: relative;
@@ -50,7 +50,6 @@
     -webkit-user-select: none;
     -moz-user-select: none;
 }
-
 .properties {
     display: flex;
     flex-direction: column;
@@ -84,9 +83,9 @@
 }
 .errorMessage {
     padding: 10px;
-    border: 1px solid #e74c3c;
+    border: 1px solid #27ae60;
     text-align: center;
-    color: #e74c3c;
+    color: #27ae60;
     transition: .25s;
     height: 100%;
 }

@@ -32,7 +32,7 @@ const WelcomePage = ({ reagents, products, solvents, setProperties }) => {
             },
             {
                 name: 'Carbon Efficiency',
-                value: propertyFunc.getCarbonEfficiency(products, reagents).toFixed(2),
+                value: typeof(propertyFunc.getCarbonEfficiency(products, reagents)) ===  'string' ? propertyFunc.getCarbonEfficiency(products, reagents) : propertyFunc.getCarbonEfficiency(products, reagents).toFixed(2),
                 optimumValue: 100,
                 unit: '%'
             },
